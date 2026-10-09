@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>DrZiad — دليل أنظمة الثانوية وجدولة الطلاب</title>
+  <meta name="description" content="دليل مذاكراوي الداخلي لفهم أنظمة المرحلة الثانوية المصرية وإعداد جداول الطلاب للعام 2026/2027.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="noindex, nofollow">
+  <!-- خط عربي حديث (تحسين تجميلي اختياري)؛ يوجد بديل نظامي يعمل دون إنترنت -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Cairo:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="print.css" media="all">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230f766e'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <a href="#view" class="skip-link">تخطَّ إلى المحتوى</a>
+
+  <!-- ترويسة الطباعة (تظهر عند الطباعة فقط) -->
+  <div class="print-header" id="printHeader" aria-hidden="true"></div>
+
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="فتح القائمة">☰</button>
+      <div class="brand">
+        <span class="logo" aria-hidden="true">DZ</span>
+        <span class="ttl">
+          <b>DrZiad · دليل أنظمة الثانوية</b>
+          <span>دليل مذاكراوي الداخلي لإعداد جداول الطلاب</span>
+        </span>
+      </div>
+      <span class="spacer"></span>
+      <span class="badge meta-chip" id="metaChip"></span>
+      <div class="a11y-tools">
+        <button class="icon-btn" id="fontDown" aria-label="تصغير الخط" title="تصغير الخط">أ−</button>
+        <button class="icon-btn" id="fontUp" aria-label="تكبير الخط" title="تكبير الخط">أ+</button>
+      </div>
+      <button class="icon-btn" id="searchBtn" aria-label="بحث شامل" title="بحث (Ctrl+K)">🔍</button>
+      <button class="icon-btn" id="themeBtn" aria-label="تبديل الوضع الداكن/الفاتح" title="الوضع الداكن/الفاتح">🌙</button>
+    </header>
+
+    <div class="layout">
+      <!-- Sidebar -->
+      <nav class="sidebar" id="sidebar" aria-label="التنقل الرئيسي"></nav>
+
+      <!-- Main -->
+      <main class="main" id="main">
+        <div id="storageWarn" class="alert warn" role="alert" style="display:none">
+          <span class="ic">⚠️</span>
+          <div class="body"><b>التخزين المحلي غير متاح.</b> قد لا يُحفظ تقدمك (وضع تصفح خاص أو حظر البيانات). تعمل القراءة والبحث بشكل طبيعي.</div>
+        </div>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="مسار التنقل"></nav>
+        <section id="view" tabindex="-1" aria-live="polite"></section>
+        <!-- مصادر الطباعة -->
+        <div class="print-sources" id="printSources" aria-hidden="true"></div>
+      </main>
+    </div>
+  </div>
+
+  <div class="backdrop" id="backdrop"></div>
+  <button class="to-top" id="toTop" aria-label="العودة إلى الأعلى">↑</button>
+
+  <!-- Search overlay -->
+  <div class="overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="البحث الشامل">
+    <div class="modal">
+      <div class="modal-head">
+        <strong>🔍 بحث شامل</strong>
+        <span class="spacer" style="flex:1"></span>
+        <button class="icon-btn" id="searchClose" aria-label="إغلاق البحث">✕</button>
+      </div>
+      <div class="modal-body">
+        <input class="input" id="searchInput" type="search" style="width:100%"
+          placeholder="ابحث في المواد، الاختصارات، القواعد، الأخطاء، المصادر… (يدعم العربي والإنجليزي)"
+          aria-label="حقل البحث">
+        <div id="searchResults" style="margin-top:.8rem"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Generic modal -->
+  <div class="overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-head">
+        <strong id="modalTitle"></strong>
+        <span style="flex:1"></span>
+        <button class="icon-btn" id="modalClose" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- السكربتات: البيانات ثم المنطق (تعمل محلياً دون خادم) -->
+  <script src="data.js"></script>
+  <script src="storage.js"></script>
+  <script src="search.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

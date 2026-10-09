@@ -1,0 +1,43 @@
+/* =====================================================================
+   DrZiad — تنسيق الطباعة (Print Styles) — RTL
+   يُظهر اسم المشروع، تاريخ الطباعة، تاريخ البيانات، والمصادر الأساسية.
+   ===================================================================== */
+@media print {
+  :root { --fs:12px; }
+  @page { margin:14mm; }
+
+  body { background:#fff !important; color:#000 !important; }
+
+  /* إخفاء عناصر التنقل والأزرار */
+  .header, .sidebar, .backdrop, .to-top, .overlay, .menu-btn,
+  .toolbar .btn, .no-print, .nav-link, .a11y-tools, .toast { display:none !important; }
+
+  .layout { display:block !important; }
+  .main { max-width:100% !important; padding:0 !important; margin:0 !important; }
+
+  /* ترويسة الطباعة */
+  .print-header { display:block !important; border-bottom:2px solid #000; padding-bottom:6px; margin-bottom:10px; }
+  .print-header b { font-size:14px; }
+  .print-header .meta { font-size:11px; color:#333; }
+
+  /* بطاقات وجداول نظيفة */
+  .card, .table-wrap, .q-card, .acc, .stat, .tile {
+    box-shadow:none !important; border:1px solid #bbb !important; break-inside:avoid; background:#fff !important;
+  }
+  .acc { break-inside:avoid; }
+  .acc .acc-body { display:block !important; }
+  details:not([open]) > *:not(summary) { display:block !important; }
+  table { min-width:0 !important; font-size:11px; }
+  thead th { background:#eee !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  tr, img { break-inside:avoid; }
+
+  /* شارات الثقة بالأبيض والأسود مع الحفاظ على النص */
+  .conf, .badge, .tag { border:1px solid #666 !important; color:#000 !important; background:#fff !important; }
+
+  a[href]::after { content:""; } /* تجنب طباعة الروابط الطويلة */
+  .breadcrumbs { display:none !important; }
+  .print-sources { display:block !important; margin-top:12px; font-size:10px; border-top:1px solid #000; padding-top:6px; }
+}
+
+/* يظهر فقط عند الطباعة */
+.print-header, .print-sources { display:none; }
